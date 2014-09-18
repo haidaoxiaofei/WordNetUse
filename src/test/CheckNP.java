@@ -28,7 +28,7 @@ public class CheckNP {
 	 */
 	public static void main(String[] args) throws JWNLException, FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		Dictionary dic = Dictionary.getInstance(Test.class.getResourceAsStream("properties.xml"));
+		Dictionary dic = Dictionary.getInstance(CheckNP.class.getResourceAsStream("properties.xml"));
 		List<String> npList = loadWholeList();
 		String intersectIndexFile = "/home/bigstone/workspace/WordNetUse/intersectIndex.txt";
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File(intersectIndexFile)));
@@ -44,9 +44,33 @@ public class CheckNP {
 		writer.flush();
         writer.close();
 	}
+//	public static List<String> loadWholeList() throws FileNotFoundException, IOException {
+//		String allNounPhraseFilePath = "/home/bigstone/workspace/WordNetUse/myNP.txt";
+//        InputStream fis;
+//        BufferedReader br;
+//        String line;
+//        List<String> npList = new ArrayList<String>();
+//        fis = new FileInputStream(allNounPhraseFilePath);
+//        br = new BufferedReader(new InputStreamReader(fis, Charset.forName("UTF-8")));
+//        int count = 0;
+//        while ((line = br.readLine()) != null) {
+//            if (count++ % 1000 == 0) {
+//                System.out.println(count / 1000);
+//            }
+//
+//            line = line.trim();
+//            npList.add(line);
+//        }
+//
+//        br.close();
+//        br = null;
+//        fis = null;
+//        
+//        return npList;
+//    }
 	public static List<String> loadWholeList() throws FileNotFoundException, IOException {
-		String allNounPhraseFilePath = "/home/bigstone/workspace/WordNetUse/myNP.txt";
-        InputStream fis;
+		String allNounPhraseFilePath = "/home/bigstone/workspace/WordNetUse/index_np.txt";
+		InputStream fis;
         BufferedReader br;
         String line;
         List<String> npList = new ArrayList<String>();
@@ -59,14 +83,13 @@ public class CheckNP {
             }
 
             line = line.trim();
-            npList.add(line);
+            String[] tmp = line.split("\t");
+            npList.add(tmp[1]);
         }
 
         br.close();
         br = null;
         fis = null;
-        
         return npList;
     }
-	
 }

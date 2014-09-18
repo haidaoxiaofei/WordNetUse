@@ -58,7 +58,7 @@ public class WordRelationshipFinder {
 		        List<Synset> itemSynset = item.getSenses();
 		        
 		        if (relatedIsA(targetSynset, itemSynset)) {
-		        	npRelationship.add(nounPhrase.get(i) + " " + nounPhrase.get(j));
+		        	npRelationship.add(nounPhrase.get(i) + "#" + nounPhrase.get(j));
 				}
 			}
 		}

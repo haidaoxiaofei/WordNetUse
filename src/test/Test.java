@@ -67,7 +67,7 @@ public class Test {
         WordRelationshipFinder wordRelationshipFinder = WordRelationshipFinder.getInstance();
 //        int count = wordRelationshipFinder.calculateRelationshipCount(nounPhrase);
 //        System.out.println(count);
-        List<String> pairs = wordRelationshipFinder.findAllRelationship(nounPhrase);
+        List<String> pairs = wordRelationshipFinder.findAllRelationship(nounPhrase.subList(0, 100));
 //        System.out.println(pairs);
         
         String intersectIndexFile = "/home/bigstone/workspace/WordNetUse/pairs.txt";
